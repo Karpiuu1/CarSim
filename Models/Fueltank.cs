@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarSim
+namespace CarSimulator.Models
 {
     public class Fueltank
     {

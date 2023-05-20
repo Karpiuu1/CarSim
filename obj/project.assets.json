@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repos\\Project\\CarSim\\CarSimulator.csproj",
+      "projectUniqueName": "D:\\Repos\\Project\\CarSimv2\\CarSim\\CarSimulator.csproj",
       "projectName": "CarSimulator",
-      "projectPath": "D:\\Repos\\Project\\CarSim\\CarSimulator.csproj",
+      "projectPath": "D:\\Repos\\Project\\CarSimv2\\CarSim\\CarSimulator.csproj",
       "packagesPath": "C:\\Users\\Adrian\\.nuget\\packages\\",
-      "outputPath": "D:\\Repos\\Project\\CarSim\\obj\\",
+      "outputPath": "D:\\Repos\\Project\\CarSimv2\\CarSim\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarSim
+namespace CarSimulator.Services
 {
-    public class Tire
+    internal class Drive
     {
-        public double Szerokosc { get; set; }
-
     }
 }
