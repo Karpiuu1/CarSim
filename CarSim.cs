@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using CarSimulator.Models;
-using CarSimulator.Services;
 
 namespace CarSim
 {
@@ -34,6 +34,8 @@ namespace CarSim
             Console.WriteLine("Select an engine (1-3):");
             int engineChoice = Convert.ToInt32(Console.ReadLine());
             Engine selectedEngine;
+            System.Threading.Thread.Sleep(500);
+            Console.Clear();
 
             switch (engineChoice)
             {
@@ -58,6 +60,10 @@ namespace CarSim
             Console.WriteLine("Select a fuel tank (1-3): ");
             int tankChoice = Convert.ToInt32(Console.ReadLine());
             Fueltank selectedTank;
+
+            System.Threading.Thread.Sleep(500);
+            Console.Clear();
+
             switch (tankChoice)
             {
                 case 1:
@@ -74,13 +80,16 @@ namespace CarSim
                     return;
             }
             Console.WriteLine("Available tires:");
-            Console.WriteLine("1. Tires 1 - Size: " + tires1.Size + ", Width" + tires1.Width);
-            Console.WriteLine("2. Tires 2 - Size: " + tires2.Size + ", Width" + tires2.Width);
-            Console.WriteLine("3. Tires 3 - Size: " + tires3.Size + ", WIdth" + tires3.Width);
+            Console.WriteLine("1. Tires 1 - Size: " + tires1.Size + ", Width " + tires1.Width);
+            Console.WriteLine("2. Tires 2 - Size: " + tires2.Size + ", Width " + tires2.Width);
+            Console.WriteLine("3. Tires 3 - Size: " + tires3.Size + ", WIdth " + tires3.Width);
 
             Console.WriteLine("Select tires (1-3):");
             int tiresChoice = Convert.ToInt32(Console.ReadLine());
             Tires selectedTires;
+
+            System.Threading.Thread.Sleep(500);
+            Console.Clear();
 
             switch (tiresChoice)
             {
@@ -108,6 +117,9 @@ namespace CarSim
             Console.WriteLine("Select a car color (1-5)");
             int colorChoice = Convert.ToInt32(Console.ReadLine());
             Colors selectedColor;
+
+            System.Threading.Thread.Sleep(500);
+            Console.Clear();
 
             switch (colorChoice)
             {
@@ -137,8 +149,6 @@ namespace CarSim
             Console.WriteLine("Fuel tank capacity: " + selectedTank.MaxCapacity + "L");
             Console.WriteLine("Tires: " + selectedTires.Name + " " + selectedTires.Width + "  " + selectedTires.Size);
             Console.WriteLine("Color: " + selectedColor);
-            System.Threading.Thread.Sleep(2500);
-            Console.Clear();
 
             Console.WriteLine("Choice what would you like to do now:");
             Console.WriteLine("1. Drive");
@@ -241,8 +251,8 @@ namespace CarSim
 
                 engine.ConsumeFuel(fuelConsumed);
                 tank.CurrentLevel -= fuelConsumed;
-                distance ++; //fuelConsumed / engine.AvarageFuelConsumption;
-
+                // distance += engine.Mileage; //++; //fuelConsumed / engine.AvarageFuelConsumption;
+                System.Threading.Thread.Sleep(1000);
                 Console.WriteLine("Driving... Distance passed: " + distance + "km");
                 // Time passing simulation (5 seconds delay between each travaled distance
                 System.Threading.Thread.Sleep(5000);
