@@ -10,10 +10,10 @@ namespace CarSimulator.Models
     {
         public double MaxCapacity { get; set; }
         public double CurrentLevel { get; set; }
-        public Fueltank (double MaxCapacity)
+        public Fueltank (double maxCapacity)
         {
-            MaxCapacity = MaxCapacity;
-            CurrentLevel = 0;
+            MaxCapacity = maxCapacity;
+            CurrentLevel = maxCapacity;
         }
     }
 }

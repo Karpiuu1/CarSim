@@ -31,7 +31,7 @@ namespace CarSimulator.Models
             {
                 throw new ArgumentException("Fuel amount cannot be negative.");
             }
-            double distance = fuelAmount / AvarageFuelConsumption;
+            double distance = fuelAmount / AvarageFuelConsumption * 100;
             Mileage += distance;
         }
     }
