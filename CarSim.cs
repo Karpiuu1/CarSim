@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using CarSimulator.Models;
+using CarSimulator.Services;
 
 namespace CarSim
 {
@@ -11,38 +14,43 @@ namespace CarSim
     {
         static void Main(string[] args)
         {
-            Engine silnik1 = new Engine("BMW N63B44", 4398, 10.4);
-            Engine silnik2 = new Engine("Toyota 2JZ", 2952, 10.1);
-            Engine silnik3 = new Engine("Ford Mustang 5.0 TiVC", 7015, 21.5);
+            Engine engine1 = new Engine("Engine 1", 2.0, "123456", 200, 10.0);
+            Engine engine2 = new Engine("Engine 2", 3.0, "789123", 250, 8.5);
+            Engine engine3 = new Engine("Engine 3", 2.5, "345678", 220, 9.5);
 
-            Console.WriteLine("Witaj w konfiguratorze swojego samochodu, wybierz kolejno elementy składowe pojazdu, a następnie go przetestuj.");
-            Console.WriteLine("Dostępne silniki:");
-            Console.WriteLine("1. " + silnik1.Nazwa);
-            Console.WriteLine("2. " + silnik2.Nazwa);
-            Console.WriteLine("3. " + silnik3.Nazwa);
+            Fueltank tank1 = new Fueltank(50.0);
+            Fueltank tank2 = new Fueltank(60.0);
+            Fueltank tank3 = new Fueltank(70.0);
 
-            Console.WriteLine("Wybierz, który silnik chcesz zamontowac do pojazdu (1-3):");
-            int wybor = Convert.ToInt32(Console.ReadLine());
+            Tires tires1 = new Tires("Tires 1", 18.0, 225.0);
+            Tires tires2 = new Tires("Tires 2", 19.0, 235.0);
+            Tires tires3 = new Tires("Tires 3", 17.0, 215.0);
 
-            Engine wybranySilnik;
-            switch (wybor)
+            Console.WriteLine("Available engines:");
+            Console.WriteLine("1. Engine 1 - Capacity: " + engine1.Capacity + "L, Horsepower: " + engine1.Horsepower);
+            Console.WriteLine("2. Engine 2 - Capacity: " + engine2.Capacity + "L, Horsepower: " + engine2.Horsepower);
+            Console.WriteLine("3. Engine 3 - Capacity: " + engine2.Capacity + "L, Horsepower: " + engine3.Horsepower);
+
+            Console.WriteLine("Select an engine (1-3):");
+            int engineChoice = Convert.ToInt32(Console.ReadLine());
+            Engine selectedEngine;
+
+            switch (engineChoice)
             {
                 case 1:
-                    wybranySilnik = silnik1;
+                    selectedEngine = engine1;
                     break;
                 case 2:
-                    wybranySilnik = silnik2;
+                    selectedEngine = engine2; 
                     break;
                 case 3:
-                    wybranySilnik = silnik3;
+                    selectedEngine = engine3;
                     break;
                 default:
-                    Console.WriteLine("Nieprawidłowo wybrany silnik, należy wskazać pozycje od 1 do 3");
+                    Console.WriteLine("Invalid engine choice. Exiting program.");
                     return;
             }
-            Console.WriteLine("Wybrano silnik:", wybranySilnik.Nazwa);
-            Console.WriteLine("Pojemność silnika:" + wybranySilnik.Pojemnosc + " cm3");
-            Console.WriteLine("Śrendie spalanie silnika:" + wybranySilnik.Spalanie + " L/100km");
         }
+       
     }
 }

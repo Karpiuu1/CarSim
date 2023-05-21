@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarSimulator.Models
 {
-    public enum Color
+    public enum Colors
     {
         Red,
         Blue,

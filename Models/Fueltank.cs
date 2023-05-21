@@ -8,12 +8,12 @@ namespace CarSimulator.Models
 {
     public class Fueltank
     {
-        private const int Capacity = 80;
-        private int currentFuel;
-
-        public Fueltank()
+        public double MaxCapacity { get; set; }
+        public double CurrentLevel { get; set; }
+        public Fueltank (double MaxCapacity)
         {
-            currentFuel = 0;
+            MaxCapacity = MaxCapacity;
+            CurrentLevel = 0;
         }
     }
 }

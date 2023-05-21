@@ -7,18 +7,32 @@ using System.Threading.Tasks;
 
 namespace CarSimulator.Models
 {
-    internal class Engine
+    class Engine
     {
-        public string Nazwa { get; set; }
-        public double Pojemnosc { get; set; }
-        public double Spalanie { get; set; }
+        public string Name { get; set; }
+        public double Capacity { get; set; }
+        public string SerialNumber { get; set; }
+        public int Horsepower { get; set; }
+        public double AvarageFuelConsumption { get; set; }
+        public double Mileage { get; private set; }
 
-        public Engine(string nazwa, double pojemnosc, double spalanie)
+        public Engine(string name, double capacity, string serialNumber, int horsepower, double avarageFuelConsumption)
         {
-            Nazwa = nazwa;
-            Pojemnosc = pojemnosc;
-            Spalanie = spalanie;
+            Name = name;
+            Capacity = capacity;
+            SerialNumber = serialNumber;
+            Horsepower = horsepower;
+            AvarageFuelConsumption = avarageFuelConsumption;
+            Mileage = 0;
         }
-
+        public void ConsumeFuel (double fuelAmount)
+        {
+            if (fuelAmount < 0)
+            {
+                throw new ArgumentException("Fuel amount cannot be negative.");
+            }
+            double distance = fuelAmount / AvarageFuelConsumption;
+            Mileage += distance;
+        }
     }
 }
