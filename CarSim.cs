@@ -14,22 +14,22 @@ namespace CarSim
     {
         static void Main(string[] args)
         {
-            Engine engine1 = new Engine("Engine 1", 2.0, "123456", 200, 10.0);
-            Engine engine2 = new Engine("Engine 2", 3.0, "789123", 250, 8.5);
-            Engine engine3 = new Engine("Engine 3", 2.5, "345678", 220, 9.5);
+            Engine engine1 = new Engine("Ford EcoBoost", 2.0, "WFAAX028125IS", 200, 10.0);
+            Engine engine2 = new Engine("BMW N53B30", 3.0, "WBANA202B294712", 250, 8.5);
+            Engine engine3 = new Engine("Mercedes M270", 2.5, "XZ425SDX2394255", 220, 9.5);
 
             Fueltank tank1 = new Fueltank(50.0);
             Fueltank tank2 = new Fueltank(60.0);
             Fueltank tank3 = new Fueltank(70.0);
 
-            Tires tires1 = new Tires("Tires 1", 18.0, 225.0);
-            Tires tires2 = new Tires("Tires 2", 19.0, 235.0);
-            Tires tires3 = new Tires("Tires 3", 17.0, 215.0);
+            Tires tires1 = new Tires("18' BBS", 18.0, 225.0);
+            Tires tires2 = new Tires("19' JapanRacing", 19.0, 235.0);
+            Tires tires3 = new Tires("17' AEZ", 17.0, 215.0);
 
             Console.WriteLine("Available engines:");
-            Console.WriteLine("1. Engine 1 - Capacity: " + engine1.Capacity + "L, Horsepower: " + engine1.Horsepower);
-            Console.WriteLine("2. Engine 2 - Capacity: " + engine2.Capacity + "L, Horsepower: " + engine2.Horsepower);
-            Console.WriteLine("3. Engine 3 - Capacity: " + engine2.Capacity + "L, Horsepower: " + engine3.Horsepower);
+            Console.WriteLine("1. Ford EcoBoost - Capacity: " + engine1.Capacity + "L, Horsepower: " + engine1.Horsepower);
+            Console.WriteLine("2. BMW N53B30 - Capacity: " + engine2.Capacity + "L, Horsepower: " + engine2.Horsepower);
+            Console.WriteLine("3. Mercedes M270 - Capacity: " + engine2.Capacity + "L, Horsepower: " + engine3.Horsepower);
 
             Console.WriteLine("Select an engine (1-3):");
             int engineChoice = Convert.ToInt32(Console.ReadLine());
@@ -53,9 +53,9 @@ namespace CarSim
                     return;
             }
             Console.WriteLine("Available fuel tanks: ");
-            Console.WriteLine("1. Tank 1 - Max Capacity: " + tank1.MaxCapacity + "L");
-            Console.WriteLine("2. Tank 2 - Max Capacity: " + tank2.MaxCapacity + "L");
-            Console.WriteLine("3. Tank 3 - Max Capacity: " + tank3.MaxCapacity + "L");
+            Console.WriteLine("1. Fueltank 1 - Max Capacity: " + tank1.MaxCapacity + "L");
+            Console.WriteLine("2. Fueltank 2 - Max Capacity: " + tank2.MaxCapacity + "L");
+            Console.WriteLine("3. Fueltank 3 - Max Capacity: " + tank3.MaxCapacity + "L");
 
             Console.WriteLine("Select a fuel tank (1-3): ");
             int tankChoice = Convert.ToInt32(Console.ReadLine());
@@ -80,9 +80,9 @@ namespace CarSim
                     return;
             }
             Console.WriteLine("Available tires:");
-            Console.WriteLine("1. Tires 1 - Size: " + tires1.Size + ", Width " + tires1.Width);
-            Console.WriteLine("2. Tires 2 - Size: " + tires2.Size + ", Width " + tires2.Width);
-            Console.WriteLine("3. Tires 3 - Size: " + tires3.Size + ", WIdth " + tires3.Width);
+            Console.WriteLine("1. 18' BBS - Size: " + tires1.Size + ", Width " + tires1.Width);
+            Console.WriteLine("2. 19' JapanRacing - Size: " + tires2.Size + ", Width " + tires2.Width);
+            Console.WriteLine("3. 17' AEZ - Size: " + tires3.Size + ", WIdth " + tires3.Width);
 
             Console.WriteLine("Select tires (1-3):");
             int tiresChoice = Convert.ToInt32(Console.ReadLine());
@@ -149,7 +149,7 @@ namespace CarSim
             Console.WriteLine("Fuel tank capacity: " + selectedTank.MaxCapacity + "L");
             Console.WriteLine("Tires: " + selectedTires.Name + " " + selectedTires.Width + "  " + selectedTires.Size);
             Console.WriteLine("Color: " + selectedColor);
-
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
             Console.WriteLine("Choice what would you like to do now:");
             Console.WriteLine("1. Drive");
             Console.WriteLine("2. Change engine");
@@ -173,6 +173,7 @@ namespace CarSim
                             continue;
                         }
                         Console.WriteLine("Driving...");
+                        System.Threading.Thread.Sleep(2500);
                         isDriving = true;
                         DriveCar(selectedEngine, selectedTank);
                         isDriving = false;
@@ -180,9 +181,9 @@ namespace CarSim
                         break;
                     case 2:
                         Console.WriteLine("Select a new engine:");
-                        Console.WriteLine("1. Engine 1 - Mileage: " + engine1.Mileage + "km");
-                        Console.WriteLine("2. Engine 2 - Mileage: " + engine2.Mileage + "km");
-                        Console.WriteLine("3. Engine 3 - Mileage: " + engine3.Mileage + "km");
+                        Console.WriteLine("1. Ford EcoBoost - Mileage: " + engine1.Mileage + "km");
+                        Console.WriteLine("2. 19' JapanRacing - Mileage: " + engine2.Mileage + "km");
+                        Console.WriteLine("3. Mercedes M270 - Mileage: " + engine3.Mileage + "km");
                         int newEngineChoice = Convert.ToInt32(Console.ReadLine());
 
                         Engine newEngine;
@@ -255,9 +256,9 @@ namespace CarSim
                 System.Threading.Thread.Sleep(1000);
                 Console.WriteLine("Driving... Distance passed: " + distance + "km");
                 // Time passing simulation (5 seconds delay between each travaled distance
-                System.Threading.Thread.Sleep(5000);
+                
             }
-
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Car stopped. Out of fuel.");
             Console.WriteLine("Choice what would you like to do now:");
             Console.WriteLine("1. Drive");
