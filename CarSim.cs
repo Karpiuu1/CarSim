@@ -172,14 +172,16 @@ namespace CarSim
                             Console.WriteLine("Car is already driving");
                             continue;
                         }
+                        Console.Clear();
                         Console.WriteLine("Driving...");
                         System.Threading.Thread.Sleep(2500);
                         isDriving = true;
                         DriveCar(selectedEngine, selectedTank);
                         isDriving = false;
-                  
+
                         break;
                     case 2:
+                        Console.Clear();
                         Console.WriteLine("Select a new engine:");
                         Console.WriteLine("1. Ford EcoBoost - Mileage: " + engine1.Mileage + "km");
                         Console.WriteLine("2. 19' JapanRacing - Mileage: " + engine2.Mileage + "km");
@@ -205,17 +207,34 @@ namespace CarSim
                         selectedEngine = newEngine;
                         Console.WriteLine("Engine changed to: " + selectedEngine.Name);
                         System.Threading.Thread.Sleep(2500);
-                        
+                        Console.Clear();
+                        Console.WriteLine("Choice what would you like to do now:");
+                        Console.WriteLine("1. Drive");
+                        Console.WriteLine("2. Change engine");
+                        Console.WriteLine("3. Refuel");
+                        Console.WriteLine("4. Car status");
+                        Console.WriteLine("5. Exit program");
+
+
                         break;
                     case 3:
+                        Console.Clear();
                         Console.WriteLine("Enter fuel amount to refuel:");
                         double refuelAmount = Convert.ToDouble(Console.ReadLine());
                         selectedTank.CurrentLevel += refuelAmount;
-                        Console.WriteLine("Fuel tank is refueled by " + refuelAmount + "liters");
+                        Console.WriteLine("Fuel tank is refueled by " + refuelAmount + " liters");
                         System.Threading.Thread.Sleep(2500);
-                    
+                        Console.Clear();
+                        Console.WriteLine("Choice what would you like to do now:");
+                        Console.WriteLine("1. Drive");
+                        Console.WriteLine("2. Change engine");
+                        Console.WriteLine("3. Refuel");
+                        Console.WriteLine("4. Car status");
+                        Console.WriteLine("5. Exit program");
+
                         break;
                     case 4:
+                        Console.Clear();
                         Console.WriteLine("Current car status:");
                         Console.WriteLine("Color " + selectedColor);
                         Console.WriteLine("Engine " + selectedEngine.Name);
@@ -223,6 +242,15 @@ namespace CarSim
                         Console.WriteLine("Acutual fuel tank level: " + selectedTank.CurrentLevel + "L");
                         Console.WriteLine("Tires: " + selectedTires.Name);
                         Console.WriteLine("Mileage: " + selectedEngine.Mileage + "km");
+                        Console.WriteLine("Press any button to get back to main menu");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Console.WriteLine("Choice what would you like to do now:");
+                        Console.WriteLine("1. Drive");
+                        Console.WriteLine("2. Change engine");
+                        Console.WriteLine("3. Refuel");
+                        Console.WriteLine("4. Car status");
+                        Console.WriteLine("5. Exit program");
                         break;
                     case 5:
                         Console.WriteLine("Exiting program.");
@@ -235,15 +263,21 @@ namespace CarSim
                         
                     
                 }
+                
             } while (menuChoice != 5);
             
         }
         static void DriveCar(Engine engine, Fueltank tank)
         {
             double distance = tank.CurrentLevel / engine.AvarageFuelConsumption * 100; // constant distance to drive in kilometers
+            double fuelCapacity = tank.CurrentLevel;
+            int fuelUsed = 0;
+            string fuelBar = new string('#', (int)fuelCapacity);
+            Console.WriteLine($"[{fuelBar}] Actual fuel status");
 
             while (tank.CurrentLevel > 0 && distance > 0)
             {
+               
                 double fuelConsumed = engine.AvarageFuelConsumption * distance;
                 if (fuelConsumed > tank.CurrentLevel)
                 {
@@ -253,13 +287,25 @@ namespace CarSim
                 engine.ConsumeFuel(fuelConsumed);
                 tank.CurrentLevel -= fuelConsumed;
                 // distance += engine.Mileage; //++; //fuelConsumed / engine.AvarageFuelConsumption;
+                while(fuelUsed < fuelCapacity)
+                {
+                    fuelUsed++;
+                    fuelBar = fuelBar.Substring(0, (int)fuelCapacity - fuelUsed) + "-" + fuelBar.Substring((int)fuelCapacity - fuelUsed + 1);
+                    Console.Clear();
+                    Console.WriteLine($"[{fuelBar}] Actual fuel status");
+                    System.Threading.Thread.Sleep(100);
+                }
+                Console.WriteLine("Car stopped. Out of fuel - fueltank is empty");
                 System.Threading.Thread.Sleep(1000);
                 Console.WriteLine("Driving... Distance passed: " + distance + "km");
                 // Time passing simulation (5 seconds delay between each travaled distance
-                
+                System.Threading.Thread.Sleep(1000);
+
             }
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("Car stopped. Out of fuel.");
+            
+            
+            System.Threading.Thread.Sleep(5000);
+            Console.Clear();
             Console.WriteLine("Choice what would you like to do now:");
             Console.WriteLine("1. Drive");
             Console.WriteLine("2. Change engine");
