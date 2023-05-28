@@ -184,7 +184,7 @@ namespace CarSim
                         Console.Clear();
                         Console.WriteLine("Select a new engine:");
                         Console.WriteLine("1. Ford EcoBoost - Mileage: " + engine1.Mileage + "km");
-                        Console.WriteLine("2. 19' JapanRacing - Mileage: " + engine2.Mileage + "km");
+                        Console.WriteLine("2. BMW N53B30 - Mileage: " + engine2.Mileage + "km");
                         Console.WriteLine("3. Mercedes M270 - Mileage: " + engine3.Mileage + "km");
                         int newEngineChoice = Convert.ToInt32(Console.ReadLine());
 
