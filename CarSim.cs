@@ -150,7 +150,7 @@ namespace CarSim
             Console.WriteLine("Tires: " + selectedTires.Name + " " + selectedTires.Width + "  " + selectedTires.Size);
             Console.WriteLine("Color: " + selectedColor);
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
-            Console.WriteLine("Choice what would you like to do now:");
+            Console.WriteLine("Choose what would you like to do now:");
             Console.WriteLine("1. Drive");
             Console.WriteLine("2. Change engine");
             Console.WriteLine("3. Refuel");
@@ -208,7 +208,7 @@ namespace CarSim
                         Console.WriteLine("Engine changed to: " + selectedEngine.Name);
                         System.Threading.Thread.Sleep(2500);
                         Console.Clear();
-                        Console.WriteLine("Choice what would you like to do now:");
+                        Console.WriteLine("Choose what would you like to do now:");
                         Console.WriteLine("1. Drive");
                         Console.WriteLine("2. Change engine");
                         Console.WriteLine("3. Refuel");
@@ -221,12 +221,16 @@ namespace CarSim
                         Console.Clear();
                         Console.WriteLine("Enter fuel amount to refuel:");
                         double refuelAmount = Convert.ToDouble(Console.ReadLine());
-                        
+
                         if (refuelAmount > selectedTank.MaxCapacity)
                         {
                             Console.WriteLine($"{refuelAmount} liters is way to much, maximum capacity is {selectedTank.MaxCapacity} liters");
                             System.Threading.Thread.Sleep(3000);
                             Console.Clear();
+                        }
+                        if (refuelAmount > selectedTank.MaxCapacity - selectedTank.CurrentLevel)
+                        {
+                            Console.WriteLine($"You can't refuel {refuelAmount} liters, because there is {selectedTank.CurrentLevel} liters out of {selectedTank.MaxCapacity} liters already in fueltank");
                         }
                         else
                         {
@@ -236,7 +240,7 @@ namespace CarSim
                             Console.Clear();
                         }
 
-                        Console.WriteLine("Choice what would you like to do now:");
+                        Console.WriteLine("Choose what would you like to do now:");
                         Console.WriteLine("1. Drive");
                         Console.WriteLine("2. Change engine");
                         Console.WriteLine("3. Refuel");
@@ -247,8 +251,8 @@ namespace CarSim
                     case 4:
                         Console.Clear();
                         Console.WriteLine("Current car status:");
-                        Console.WriteLine("Color " + selectedColor);
-                        Console.WriteLine("Engine " + selectedEngine.Name);
+                        Console.WriteLine("Color: " + selectedColor);
+                        Console.WriteLine("Engine: " + selectedEngine.Name);
                         Console.WriteLine("Fuel tank capacity: " + selectedTank.MaxCapacity + "L");
                         Console.WriteLine("Acutual fuel tank level: " + selectedTank.CurrentLevel + "L");
                         Console.WriteLine("Tires: " + selectedTires.Name);
@@ -256,7 +260,7 @@ namespace CarSim
                         Console.WriteLine("Press any button to get back to main menu");
                         Console.ReadKey();
                         Console.Clear();
-                        Console.WriteLine("Choice what would you like to do now:");
+                        Console.WriteLine("Choose what would you like to do now:");
                         Console.WriteLine("1. Drive");
                         Console.WriteLine("2. Change engine");
                         Console.WriteLine("3. Refuel");
@@ -317,7 +321,7 @@ namespace CarSim
             
             System.Threading.Thread.Sleep(5000);
             Console.Clear();
-            Console.WriteLine("Choice what would you like to do now:");
+            Console.WriteLine("Choose what would you like to do now:");
             Console.WriteLine("1. Drive");
             Console.WriteLine("2. Change engine");
             Console.WriteLine("3. Refuel");
