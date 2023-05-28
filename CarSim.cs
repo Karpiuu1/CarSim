@@ -221,10 +221,21 @@ namespace CarSim
                         Console.Clear();
                         Console.WriteLine("Enter fuel amount to refuel:");
                         double refuelAmount = Convert.ToDouble(Console.ReadLine());
-                        selectedTank.CurrentLevel += refuelAmount;
-                        Console.WriteLine("Fuel tank is refueled by " + refuelAmount + " liters");
-                        System.Threading.Thread.Sleep(2500);
-                        Console.Clear();
+                        
+                        if (refuelAmount > selectedTank.MaxCapacity)
+                        {
+                            Console.WriteLine($"{refuelAmount} liters is way to much, maximum capacity is {selectedTank.MaxCapacity} liters");
+                            System.Threading.Thread.Sleep(3000);
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            selectedTank.CurrentLevel += refuelAmount;
+                            Console.WriteLine("Fuel tank is refueled by " + refuelAmount + " liters");
+                            System.Threading.Thread.Sleep(2500);
+                            Console.Clear();
+                        }
+
                         Console.WriteLine("Choice what would you like to do now:");
                         Console.WriteLine("1. Drive");
                         Console.WriteLine("2. Change engine");
